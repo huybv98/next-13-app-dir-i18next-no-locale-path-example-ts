@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
+import { dir } from 'i18next'
+import { detectLanguage } from '@/locales/index'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,8 +16,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const lng = detectLanguage()
   return (
-    <html lang="en">
+    <html lang={lng} dir={dir(lng)}>
       <body className={inter.className}>{children}</body>
     </html>
   )
